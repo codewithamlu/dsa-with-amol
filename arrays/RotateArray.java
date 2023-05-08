@@ -6,7 +6,17 @@ public class RotateArray {
     public static void main(String[] args) {
         int[] arr = { 1, 2, 3, 4, 5 };
         int k = 2;
-        rotateUsingTemp(arr, k);
+
+        // Convert value of k into 0 - 5 by taking modulus
+        k %= arr.length;
+
+        // If k is negative , add n to k so that it comes in our range
+        if (k < 0)
+            k += arr.length;
+
+        // rotateUsingTemp(arr, k);
+        // rotateCyclicly(arr, k);
+        rotateByReverse(arr, k);
         System.out.println(Arrays.toString(arr));
     }
 
@@ -36,7 +46,47 @@ public class RotateArray {
         }
     }
 
-    static void rotate(int[] arr, int k) {
+    /*
+     * Another approach
+     * Store last element in temporary variable
+     * Loop until 0 to k - 1 and rotate array elements from last one by one
+     * Then store last element at 0th index
+     * 
+     * Time Complexity - O(n)
+     * Space Complexity - O(1)
+     */
+    static void rotateCyclicly(int[] arr, int k) {
+        for (int i = 0; i < k; i++) {
+            cyclicRotateOneByOne(arr);
+            System.out.println(i + "th -> " + Arrays.toString(arr));
+        }
+    }
 
+    static void cyclicRotateOneByOne(int[] arr) {
+        int n = arr.length;
+        int last = arr[n - 1];
+        for (int i = n - 1; i > 0; i--) {
+            arr[i] = arr[i - 1];
+        }
+        arr[0] = last;
+    }
+
+    static void rotateByReverse(int[] arr, int k) {
+        reverseArrayStartToEnd(arr, 0, arr.length);
+        reverseArrayStartToEnd(arr, 0, k);
+        reverseArrayStartToEnd(arr, k, arr.length);
+    }
+
+    static void reverseArrayStartToEnd(int[] arr, int start, int end) {
+        int n = end - 1;
+        for (int i = start; i < end / 2; i++) {
+            swap(arr, i, n - i);
+        }
+    }
+
+    static void swap(int[] arr, int a, int b) {
+        int temp = arr[a];
+        arr[a] = arr[b];
+        arr[b] = temp;
     }
 }

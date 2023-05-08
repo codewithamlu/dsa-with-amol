@@ -6,7 +6,7 @@ public class ReverseArray {
     public static void main(String[] args) {
         int[] arr = { 1, 2, 3, 4, 5 };
 
-        reverseArrayInPlace2(arr);
+        reverseArrayInPlace(arr);
         System.out.println(Arrays.toString(arr));
 
         // int[] ans = reverseArray(arr);
@@ -45,7 +45,8 @@ public class ReverseArray {
 
     /*
      * Optimalpproach
-     * Let's do it in-place reversal using idx variable and decrementing on every iteration
+     * Let's do it in-place reversal using idx variable and decrementing on every
+     * iteration
      * Time Complexity - O(n)
      * Space Complexity - O(1)
      */
@@ -61,5 +62,12 @@ public class ReverseArray {
         int temp = arr[a];
         arr[a] = arr[b];
         arr[b] = temp;
+    }
+
+    static void reverseArrayStartToEnd(int[] arr, int start, int end) {
+        int n = end - 1;
+        for (int i = start; i < end / 2; i++) {
+            swap(arr, i, n - i);
+        }
     }
 }
