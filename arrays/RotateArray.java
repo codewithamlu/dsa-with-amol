@@ -58,7 +58,6 @@ public class RotateArray {
     static void rotateCyclicly(int[] arr, int k) {
         for (int i = 0; i < k; i++) {
             cyclicRotateOneByOne(arr);
-            System.out.println(i + "th -> " + Arrays.toString(arr));
         }
     }
 
