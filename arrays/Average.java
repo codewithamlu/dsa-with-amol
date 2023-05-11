@@ -6,10 +6,11 @@ public class Average {
         System.out.println(getAverage(arr));
     }
 
-    /*  Brute - force approach
-        Time Complexity -  O(n)
-        Space Complexity - O(1)
-    */
+    /*
+     * Brute - force approach
+     * Time Complexity - O(n)
+     * Space Complexity - O(1)
+     */
     static double getAverage(int[] arr) {
         int sum = 0;
         for (int i = 0; i < arr.length; i++) {

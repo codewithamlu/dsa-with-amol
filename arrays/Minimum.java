@@ -6,10 +6,11 @@ public class Minimum {
         System.out.println(getMinimum(arr));
     }
 
-    /*  Brute - force approach
-        Time Complexity -  O(n)
-        Space Complexity - O(1)
-    */
+    /*
+     * Brute - force approach
+     * Time Complexity - O(n)
+     * Space Complexity - O(1)
+     */
     static int getMinimum(int[] arr) {
         int minimum = Integer.MAX_VALUE;
         for (int i = 0; i < arr.length; i++) {
